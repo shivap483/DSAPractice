@@ -36,12 +36,26 @@ def buildTree(list, i=0):
     return node
 
 
-A = [1, 1, 1, 3, 3, 4, 6, 5, 3, 3]
-B = 10
-C = 3
+A = 8
+B = [
+    [3, 3, 8],
+    [3, 3, 7],
+    [3, 1, 7],
+    [2, 4, -1],
+    [3, 4, 8],
+    [2, 8, -1],
+    [3, 3, 6],
+    [1, 4, -1],
+    [3, 1, 8],
+    [1, 1, -1],
+    [1, 1, -1],
+    [3, 1, 5],
+    [3, 4, 8]
+]
+C = 2
 sol = Solution()
 s = datetime.datetime.now()
-temp = sol.solve(A, B, C)
+temp = sol.solve(A, B)
 print(temp)
 # print("inoder: ", end=":")
 # print_inorder(temp)
@@ -61,9 +75,9 @@ print(e - s)
 def quickSort(arr, low, high):
     if high <= low:
         return
-    
+
     p = partition(arr, low, high)
-    
+
     quickSort(arr, low, p - 1)
     quickSort(arr, p + 1, high)
 

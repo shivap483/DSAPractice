@@ -41,21 +41,3 @@ class SegmentTree:
         rc = 2 * index + 2
         mid = start + (end - start) // 2
         return self.query(l, r, lc, start, mid) + self.query(l, r, rc, mid + 1, end)
-
-
-class Solution:
-    # @param A : integer
-    # @param B : list of list of integers
-    # @return a list of integers
-    def solve(self, A, B):
-        list = [0 for _ in range(A)]
-        ans = []
-        segment_tree = SegmentTree(list)
-        index = start = 0
-        end = A - 1
-        for query in B:
-            if query[0] == 1 or query[0] == 2:
-                segment_tree.update(query[0], query[1] - 1, index, start, end)
-            else:
-                ans.append(segment_tree.query(query[1] - 1, query[2] - 1, index, start, end))
-        return ans
